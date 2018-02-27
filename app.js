@@ -4,28 +4,26 @@ require('dotenv').config({
     path: './.env'
 });
 
-var admin = require('firebase-admin');
 
-var serviceAccount = require('./firebase.json');
+const main = require('./main');
+var cors = require('cors')
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
-});
-const main = require('./scripts/main');
+main.initialize();
 
 let express = require('express');
 let expressApp = express();
-expressApp.set('port', (process.env.PORT || 8001));
+expressApp.set('port', (process.env.PORT || 8003));
 
 let bodyParser = require('body-parser');
 expressApp.use(bodyParser.json({
     type: 'application/json'
 }));
 
+expressApp.use(cors());
+
 expressApp.get('/*', function(request, response) {
     console.log('incoming GET - should be testing only!');
-    response.send('hello!');
+    response.send('hello from Wondrous Calendar notifier');
 });
 
 // main incoming call

@@ -1,27 +1,29 @@
 {
-    "name": "badi-web3-notifier",
-    "version": "1.0.0",
-    "description": "Wondrous-Badi Web Notifier",
-    "main": "app.js",
-    "author": "Glen Little <glen.little@gmail.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/glittle/"
-    },
-    "homepage": "https://github.com/glittle/",
-    "dependencies": {
-        "dotenv": "^2.0.0",
-        "express": "^4.15.3",
-        "http": "0.0.0",
-        "request": "^2.81.0",
-        "spdy": "^3.4.7"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/glittle/badi-web3-notifier.git"
-    }
+  "name": "badi-web3-notifier",
+  "version": "1.0.0",
+  "description": "Wondrous-Badi Web Notifier",
+  "main": "app.js",
+  "author": "Glen Little <glen.little@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glittle/"
+  },
+  "homepage": "https://github.com/glittle/",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^2.0.0",
+    "express": "^4.15.3",
+    "firebase-admin": "^5.9.0",
+    "http": "0.0.0",
+    "request": "^2.81.0",
+    "spdy": "^3.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glittle/badi-web3-notifier.git"
+  }
 }
