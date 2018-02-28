@@ -1,5 +1,5 @@
 console.log(' ');
-console.log('======= SERVER RESTARTED ==============================');
+console.log('=== SERVER RESTARTED at', new Date(), '===========================');
 
 var admin = require('firebase-admin');
 var serviceAccount = require('./firebase.json');
@@ -23,13 +23,32 @@ function initialize() {
     });
 
     // load existing requests from database
+    cbRef.once('value').then(function(snapshot) {
+        var list = snapshot.val();
+        console.log('loading saved requests');
+        // console.log(list);
 
+        Object.keys(list).forEach(token => {
+            // console.log(token);
+            var when = list[token].when;
+            // console.log(when)
 
+            var next = new Date(when);
+            var now = new Date();
+            var delay = next.getTime() - now.getTime();
 
-    // timers[token] = setTimeout(function(t) {
-    //     sendNotificationToClient(t);
-    // }, delay, token);
+            // console.log(delay)
 
+            if (delay > 0) {
+                clearTimeout(timers[token]);
+                console.log(shorten(token), 'in', Math.round(delay / 100 / 60) / 10, 'min. at', next);
+                timers[token] = setTimeout(function(t) {
+                    sendNotificationToClient(t);
+                }, delay, token);
+            }
+        })
+
+    });
 }
 
 function sendNotificationToClient(token) {
